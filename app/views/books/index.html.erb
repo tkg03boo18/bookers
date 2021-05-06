@@ -22,6 +22,13 @@
 
 <h2>New book</h2>
 <%= form_with model: @book,url:'/books',local:true do |f| %>
+ <% if @book.errors.any? %>
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+ <% end %>
 <h4>Title</h4>
 <%= f.text_field :title %>
 <h4>Body</h4>
